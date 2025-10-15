@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>性格解析 - 十二生肖探秘</title>
+    <link rel="stylesheet" href="css/chushihua.css">
+    <link rel="stylesheet" href="css/index.css">
+    <style>
+        .personality-test {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 800px;
+            text-align: center;
+            border: 1px solid rgba(255,107,0,0.3);
+        }
+        
+        .test-options {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .test-option {
+            background: rgba(255,107,0,0.1);
+            border: 1px solid rgba(255,107,0,0.3);
+            border-radius: 15px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .test-option:hover {
+            background: rgba(255,107,0,0.2);
+            border-color: #ff6b00;
+            transform: translateY(-5px);
+        }
+        
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        
+        .comparison-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(255,107,0,0.3);
+        }
+        
+        .strength-weakness {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+        
+        .strength-list, .weakness-list {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 25px;
+        }
+        
+        .strength-list {
+            border-left: 4px solid #00ff00;
+        }
+        
+        .weakness-list {
+            border-left: 4px solid #ff4444;
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <img src="images/zodiac_logo.png" alt="生肖图标">
+                <h1>十二生肖探秘</h1>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="navigation_origin.html">生肖起源</a>
+                <a href="navigation_zodiac.html">生肖大全</a>
+                <a href="navigation_personality.html" class="active">性格解析</a>
+                <a href="navigation_culture.html">生肖文化</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1 class="main-title">生肖性格解析</h1>
+        <p class="sub-title">深入剖析每个生肖的性格特点、优缺点和相处之道</p>
+    </section>
+
+    <div class="personality-test">
+        <h2>快速性格测试</h2>
+        <p>选择你的生肖，了解详细的性格分析</p>
+        
+        <div class="test-options">
+            <div class="test-option" data-zodiac="rat">
+                <img src="images/rat_icon.png" alt="鼠" width="50" height="50">
+                <p>鼠</p>
+            </div>
+            <div class="test-option" data-zodiac="ox">
+                <img src="images/ox_icon.png" alt="牛" width="50" height="50">
+                <p>牛</p>
+            </div>
+            <div class="test-option" data-zodiac="tiger">
+                <img src="images/tiger_icon.png" alt="虎" width="50" height="50">
+                <p>虎</p>
+            </div>
+            <div class="test-option" data-zodiac="rabbit">
+                <img src="images/rabbit_icon.png" alt="兔" width="50" height="50">
+                <p>兔</p>
+            </div>
+        </div>
+        
+        <div id="test-result" style="display: none;">
+            <h3>您的性格分析结果</h3>
+            <div id="result-content"></div>
+        </div>
+    </div>
+
+    <section class="comparison-grid">
+        <div class="comparison-card">
+            <h3>外向型生肖</h3>
+            <p>虎、马、猴、狗</p>
+            <ul>
+                <li>热情开朗，善于交际</li>
+                <li>行动力强，喜欢挑战</li>
+                <li>适应能力强，思维活跃</li>
+                <li>有时冲动，缺乏耐心</li>
+            </ul>
+        </div>
+        
+        <div class="comparison-card">
+            <h3>内向型生肖</h3>
+            <p>牛、兔、蛇、羊</p>
+            <ul>
+                <li>沉稳内敛，心思细腻</li>
+                <li>做事谨慎，考虑周全</li>
+                <li>专注力强，有耐心</li>
+                <li>有时保守，缺乏冒险精神</li>
+            </ul>
+        </div>
+        
+        <div class="comparison-card">
+            <h3>理性型生肖</h3>
+            <p>鼠、龙、鸡、猪</p>
+            <ul>
+                <li>逻辑思维强，分析能力佳</li>
+                <li>目标明确，执行力强</li>
+                <li>善于规划，注重实际</li>
+                <li>有时固执，缺乏变通</li>
+            </ul>
+        </div>
+    </section>
+
+    <section style="max-width: 1000px; margin: 60px auto; padding: 0 20px;">
+        <h2 class="section-title">生肖性格深度解析</h2>
+        
+        <div class="strength-weakness">
+            <div class="strength-list">
+                <h3>优势特质</h3>
+                <ul>
+                    <li><strong>鼠：</strong>机智灵活，适应力强</li>
+                    <li><strong>牛：</strong>勤奋踏实，责任心强</li>
+                    <li><strong>虎：</strong>勇敢自信，领导才能</li>
+                    <li><strong>兔：</strong>温和体贴，艺术天赋</li>
+                    <li><strong>龙：</strong>气宇轩昂，充满智慧</li>
+                    <li><strong>蛇：</strong>神秘睿智，直觉敏锐</li>
+                </ul>
+            </div>
+            
+            <div class="weakness-list">
+                <h3>需要注意</h3>
+                <ul>
+                    <li><strong>鼠：</strong>有时过于谨慎</li>
+                    <li><strong>牛：</strong>固执己见</li>
+                    <li><strong>虎：</strong>冲动急躁</li>
+                    <li><strong>兔：</strong>过于敏感</li>
+                    <li><strong>龙：</strong>自负骄傲</li>
+                    <li><strong>蛇：</strong>多疑猜忌</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">十二生肖探秘</div>
+            <div class="footer-links">
+                <a href="index.html">首页</a>
+                <a href="navigation_origin.html">生肖起源</a>
+                <a href="navigation_zodiac.html">生肖大全</a>
+                <a href="navigation_personality.html">性格解析</a>
+                <a href="navigation_culture.html">生肖文化</a>
+            </div>
+            <div class="copyright">
+                &copy; 2024 十二生肖探秘 版权所有
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 60, density: { enable: true, value_area: 800 } },
+                color: { value: "#ff6b00" },
+                opacity: { value: 0.5 },
+                size: { value: 3 },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#ff6b00",
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: { enable: true, speed: 2 }
+            }
+        });
+
+        // 性格测试功能
+        const personalityData = {
+            rat: {
+                title: "属鼠的性格特点",
+                content: `
+                    <h4>主要特质</h4>
+                    <p>聪明伶俐，适应力强，善于交际，多才多艺</p>
+                    <h4>性格优势</h4>
+                    <ul>
+                        <li>观察敏锐，思维敏捷</li>
+                        <li>社交能力强，人缘好</li>
+                        <li>多才多艺，学习能力强</li>
+                        <li>勤俭节约，精打细算</li>
+                    </ul>
+                    <h4>需要注意</h4>
+                    <ul>
+                        <li>有时过于谨慎，错失良机</li>
+                        <li>容易斤斤计较</li>
+                        <li>缺乏安全感</li>
+                    </ul>
+                `
+            },
+            ox: {
+                title: "属牛的性格特点",
+                content: `
+                    <h4>主要特质</h4>
+                    <p>勤劳踏实，坚韧不拔，责任心强，传统保守</p>
+                    <h4>性格优势</h4>
+                    <ul>
+                        <li>勤奋努力，有进取心</li>
+                        <li>忠厚老实，值得信赖</li>
+                        <li>务实稳重，做事踏实</li>
+                        <li>有耐心，能坚持</li>
+                    </ul>
+                    <h4>需要注意</h4>
+                    <ul>
+                        <li>固执己见，不易变通</li>
+                        <li>缺乏幽默感</li>
+                        <li>有时过于传统保守</li>
+                    </ul>
+                `
+            }
+            // 其他生肖数据...
+        };
+
+        document.querySelectorAll('.test-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const zodiac = this.dataset.zodiac;
+                const result = personalityData[zodiac];
+                
+                if (result) {
+                    document.getElementById('result-content').innerHTML = `
+                        <h3>${result.title}</h3>
+                        ${result.content}
+                    `;
+                    document.getElementById('test-result').style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

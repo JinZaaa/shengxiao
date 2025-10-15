@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生肖大全 - 十二生肖探秘</title>
+    <link rel="stylesheet" href="css/chushihua.css">
+    <link rel="stylesheet" href="css/index.css">
+    <style>
+        .zodiac-filter {
+            text-align: center;
+            margin: 40px auto;
+            max-width: 800px;
+        }
+        
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            background: rgba(255,107,0,0.1);
+            border: 1px solid rgba(255,107,0,0.3);
+            color: #fff;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn.active, .filter-btn:hover {
+            background: rgba(255,107,0,0.3);
+            border-color: #ff6b00;
+            box-shadow: 0 0 15px rgba(255,107,0,0.3);
+        }
+        
+        .zodiac-detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .zodiac-detail-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255,107,0,0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .zodiac-detail-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff6b00;
+            box-shadow: 0 10px 25px rgba(255,107,0,0.2);
+        }
+        
+        .zodiac-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .zodiac-traits {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .trait-tag {
+            background: rgba(255,107,0,0.2);
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 12px;
+            border: 1px solid rgba(255,107,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div id="particles-js"></div>
+    
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <img src="images/zodiac_logo.png" alt="生肖图标">
+                <h1>十二生肖探秘</h1>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="navigation_origin.html">生肖起源</a>
+                <a href="navigation_zodiac.html" class="active">生肖大全</a>
+                <a href="navigation_personality.html">性格解析</a>
+                <a href="navigation_culture.html">生肖文化</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1 class="main-title">十二生肖大全</h1>
+        <p class="sub-title">深入了解每个生肖的特性、运势和文化内涵</p>
+    </section>
+
+    <div class="zodiac-filter">
+        <h3>筛选生肖</h3>
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">全部</button>
+            <button class="filter-btn" data-filter="earthly">地支分类</button>
+            <button class="filter-btn" data-filter="five-elements">五行属性</button>
+            <button class="filter-btn" data-filter="yin-yang">阴阳属性</button>
+        </div>
+    </div>
+
+    <section class="zodiac-detail-grid">
+        <!-- 鼠 -->
+        <div class="zodiac-detail-card" data-category="earthly five-elements yin-yang">
+            <div class="zodiac-header">
+                <img src="images/rat_icon.png" alt="鼠" width="80" height="80">
+                <div>
+                    <h2>子鼠</h2>
+                    <p>地支：子 | 五行：水 | 阴阳：阳</p>
+                </div>
+            </div>
+            <div class="zodiac-traits">
+                <span class="trait-tag">机智灵敏</span>
+                <span class="trait-tag">适应力强</span>
+                <span class="trait-tag">善于交际</span>
+                <span class="trait-tag">多才多艺</span>
+            </div>
+            <p>属鼠的人聪明伶俐，具有很强的环境适应能力和应变能力。他们观察敏锐，思维敏捷，是天生的社交高手。</p>
+            <a href="zodiac_rat.html" style="color: #ff6b00; text-decoration: none; display: inline-block; margin-top: 15px;">
+                查看详情 →
+            </a>
+        </div>
+
+        <!-- 牛 -->
+        <div class="zodiac-detail-card" data-category="earthly five-elements yin-yang">
+            <div class="zodiac-header">
+                <img src="images/ox_icon.png" alt="牛" width="80" height="80">
+                <div>
+                    <h2>丑牛</h2>
+                    <p>地支：丑 | 五行：土 | 阴阳：阴</p>
+                </div>
+            </div>
+            <div class="zodiac-traits">
+                <span class="trait-tag">勤劳踏实</span>
+                <span class="trait-tag">坚韧不拔</span>
+                <span class="trait-tag">责任心强</span>
+                <span class="trait-tag">传统保守</span>
+            </div>
+            <p>属牛的人勤奋努力，有强烈的进取心。他们忠厚老实，务实稳重，做事脚踏实地，是值得信赖的伙伴。</p>
+            <a href="zodiac_ox.html" style="color: #ff6b00; text-decoration: none; display: inline-block; margin-top: 15px;">
+                查看详情 →
+            </a>
+        </div>
+
+        <!-- 其他10个生肖类似结构 -->
+        <!-- 虎 -->
+        <div class="zodiac-detail-card" data-category="earthly five-elements yin-yang">
+            <div class="zodiac-header">
+                <img src="images/tiger_icon.png" alt="虎" width="80" height="80">
+                <div>
+                    <h2>寅虎</h2>
+                    <p>地支：寅 | 五行：木 | 阴阳：阳</p>
+                </div>
+            </div>
+            <div class="zodiac-traits">
+                <span class="trait-tag">勇敢果决</span>
+                <span class="trait-tag">热情开朗</span>
+                <span class="trait-tag">充满自信</span>
+                <span class="trait-tag">领导才能</span>
+            </div>
+            <p>属虎的人勇敢自信，富有冒险精神。他们热情大方，做事果断，具有很强的领导能力和组织能力。</p>
+            <a href="zodiac_tiger.html" style="color: #ff6b00; text-decoration: none; display: inline-block; margin-top: 15px;">
+                查看详情 →
+            </a>
+        </div>
+
+        <!-- 兔 -->
+        <div class="zodiac-detail-card" data-category="earthly five-elements yin-yang">
+            <div class="zodiac-header">
+                <img src="images/rabbit_icon.png" alt="兔" width="80" height="80">
+                <div>
+                    <h2>卯兔</h2>
+                    <p>地支：卯 | 五行：木 | 阴阳：阴</p>
+                </div>
+            </div>
+            <div class="zodiac-traits">
+                <span class="trait-tag">温柔体贴</span>
+                <span class="trait-tag">心思细腻</span>
+                <span class="trait-tag">彬彬有礼</span>
+                <span class="trait-tag">艺术天赋</span>
+            </div>
+            <p>属兔的人温和文静，待人彬彬有礼。他们心思细腻，感情丰富，具有很强的审美能力和艺术天赋。</p>
+            <a href="zodiac_rabbit.html" style="color: #ff6b00; text-decoration: none; display: inline-block; margin-top: 15px;">
+                查看详情 →
+            </a>
+        </div>
+
+        <!-- 龙 -->
+        <div class="zodiac-detail-card" data-category="earthly five-elements yin-yang">
+            <div class="zodiac-header">
+                <img src="images/dragon_icon.png" alt="龙" width="80" height="80">
+                <div>
+                    <h2>辰龙</h2>
+                    <p>地支：辰 | 五行：土 | 阴阳：阳</p>
+                </div>
+            </div>
+            <div class="zodiac-traits">
+                <span class="trait-tag">气宇轩昂</span>
+                <span class="trait-tag">目标远大</span>
+                <span class="trait-tag">充满智慧</span>
+                <span class="trait-tag">精力充沛</span>
+            </div>
+            <p>属龙的人气度不凡，充满智慧和力量。他们目标远大，精力充沛，是天生的领导者和决策者。</p>
+            <a href="zodiac_dragon.html" style="color: #ff6b00; text-decoration: none; display: inline-block; margin-top: 15px;">
+                查看详情 →
+            </a>
+        </div>
+
+        <!-- 蛇 -->
+        <div class="zodiac-detail-card" data-category="earthly five-elements yin-yang">
+            <div class="zodiac-header">
+                <img src="images/snake_icon.png" alt="蛇" width="80" height="80">
+                <div>
+                    <h2>巳蛇</h2>
+                    <p>地支：巳 | 五行：火 | 阴阳：阴</p>
+                </div>
+            </div>
+            <div class="zodiac-traits">
+                <span class="trait-tag">神秘睿智</span>
+                <span class="trait-tag">直觉敏锐</span>
+                <span class="trait-tag">沉着冷静</span>
+                <span class="trait-tag">财运旺盛</span>
+            </div>
+            <p>属蛇的人神秘睿智，具有很强的直觉和洞察力。他们沉着冷静，做事谨慎，通常财运亨通。</p>
+            <a href="zodiac_snake.html" style="color: #ff6b00; text-decoration: none; display: inline-block; margin-top: 15px;">
+                查看详情 →
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">十二生肖探秘</div>
+            <div class="footer-links">
+                <a href="index.html">首页</a>
+                <a href="navigation_origin.html">生肖起源</a>
+                <a href="navigation_zodiac.html">生肖大全</a>
+                <a href="navigation_personality.html">性格解析</a>
+                <a href="navigation_culture.html">生肖文化</a>
+            </div>
+            <div class="copyright">
+                &copy; 2024 十二生肖探秘 版权所有
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 60, density: { enable: true, value_area: 800 } },
+                color: { value: "#ff6b00" },
+                opacity: { value: 0.5 },
+                size: { value: 3 },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#ff6b00",
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: { enable: true, speed: 2 }
+            }
+        });
+
+        // 筛选功能
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                const filter = this.dataset.filter;
+                const cards = document.querySelectorAll('.zodiac-detail-card');
+                
+                cards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category.includes(filter)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

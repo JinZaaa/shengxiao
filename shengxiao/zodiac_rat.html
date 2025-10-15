@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>子鼠 - 十二生肖探秘</title>
+    <link rel="stylesheet" href="css/chushihua.css">
+    <link rel="stylesheet" href="css/index.css">
+    <style>
+        .rat-hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+            background-size: cover;
+            background-position: center;
+            padding: 150px 5% 80px;
+            text-align: center;
+        }
+        
+        .rat-icon-large {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            filter: drop-shadow(0 0 20px #ff6b00);
+        }
+        
+        .character-traits {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .trait-tag {
+            background: rgba(255,107,0,0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: 1px solid rgba(255,107,0,0.3);
+            font-size: 14px;
+        }
+        
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        
+        .info-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid rgba(255,107,0,0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            border-color: #ff6b00;
+            box-shadow: 0 10px 25px rgba(255,107,0,0.2);
+        }
+        
+        .compatibility-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .compat-item {
+            text-align: center;
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.05);
+        }
+        
+        .compat-item.good {
+            border: 1px solid #00ff00;
+        }
+        
+        .compat-item.normal {
+            border: 1px solid #ffcc00;
+        }
+        
+        .compat-item.bad {
+            border: 1px solid #ff4444;
+        }
+        
+        .year-cycle {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .year-item {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255,107,0,0.1);
+            border-radius: 10px;
+            min-width: 80px;
+        }
+        
+        .year-item.current {
+            background: rgba(255,107,0,0.3);
+            border: 1px solid #ff6b00;
+            box-shadow: 0 0 15px rgba(255,107,0,0.5);
+        }
+
+        /* 老鼠动画 */
+        .rat-animation {
+            position: fixed;
+            top: 0;
+            left: -100px;
+            width: 80px;
+            height: 60px;
+            z-index: 9999;
+            pointer-events: none;
+            animation: ratRun 2s ease-in-out;
+        }
+
+        @keyframes ratRun {
+            0% {
+                transform: translateX(-100px) translateY(100px);
+            }
+            25% {
+                transform: translateX(25vw) translateY(150px);
+            }
+            50% {
+                transform: translateX(50vw) translateY(100px);
+            }
+            75% {
+                transform: translateX(75vw) translateY(150px);
+            }
+            100% {
+                transform: translateX(100vw) translateY(100px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 老鼠动画 -->
+    <div id="ratAnimation" class="rat-animation" style="display: none;">
+        <svg viewBox="0 0 100 100" width="80" height="60">
+            <path d="M30,40 Q50,20 70,40 Q50,60 30,40 Z" fill="#ff6b00"/>
+            <circle cx="40" cy="35" r="5" fill="#000"/>
+            <circle cx="60" cy="35" r="5" fill="#000"/>
+            <path d="M45,50 Q50,55 55,50" stroke="#000" stroke-width="2" fill="none"/>
+            <path d="M25,45 Q15,40 10,50" stroke="#ff6b00" stroke-width="4" fill="none"/>
+        </svg>
+    </div>
+
+    <div id="particles-js"></div>
+    
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <img src="images/zodiac_logo.png" alt="生肖图标">
+                <h1>十二生肖探秘</h1>
+            </div>
+            <nav class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="navigation_origin.html">生肖起源</a>
+                <a href="navigation_zodiac.html">生肖大全</a>
+                <a href="navigation_personality.html">性格解析</a>
+                <a href="navigation_culture.html">生肖文化</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="rat-hero">
+        <img class="rat-icon-large" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M30,40 Q50,20 70,40 Q50,60 30,40 Z' fill='%23ff6b00'/%3E%3Ccircle cx='40' cy='35' r='5' fill='%23000'/%3E%3Ccircle cx='60' cy='35' r='5' fill='%23000'/%3E%3Cpath d='M45,50 Q50,55 55,50' stroke='%23000' stroke-width='2' fill='none'/%3E%3Cpath d='M25,45 Q15,40 10,50' stroke='%23ff6b00' stroke-width='4' fill='none'/%3E%3C/svg%3E" alt="鼠">
+        <h1 class="main-title">子鼠</h1>
+        <p class="sub-title">机智灵敏 · 开创先锋 · 十二生肖之首</p>
+        
+        <div class="character-traits">
+            <span class="trait-tag">聪明伶俐</span>
+            <span class="trait-tag">适应力强</span>
+            <span class="trait-tag">善于交际</span>
+            <span class="trait-tag">多才多艺</span>
+            <span class="trait-tag">观察敏锐</span>
+            <span class="trait-tag">勤俭节约</span>
+        </div>
+    </section>
+
+    <section class="detail-grid">
+        <div class="left-column">
+            <div class="info-card">
+                <h3>基本介绍</h3>
+                <p>鼠在十二生肖中排名第一，与十二地支中的"子"相对应。属鼠的人通常聪明伶俐，具有很强的环境适应能力和应变能力。</p>
+                <p>他们观察敏锐，思维敏捷，是天生的社交高手，能够在各种环境中游刃有余。</p>
+            </div>
+
+            <div class="info-card">
+                <h3>性格特点</h3>
+                <h4>优点：</h4>
+                <ul>
+                    <li>机智灵活，反应迅速</li>
+                    <li>善于交际，人缘良好</li>
+                    <li>多才多艺，学习能力强</li>
+                    <li>勤俭节约，精打细算</li>
+                    <li>适应力强，随机应变</li>
+                </ul>
+                
+                <h4>缺点：</h4>
+                <ul>
+                    <li>有时过于谨慎，错失良机</li>
+                    <li>容易斤斤计较</li>
+                    <li>缺乏安全感</li>
+                    <li>有时显得小气</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h3>鼠年周期</h3>
+                <div class="year-cycle">
+                    <div class="year-item">2008</div>
+                    <div class="year-item">1996</div>
+                    <div class="year-item">1984</div>
+                    <div class="year-item">1972</div>
+                    <div class="year-item current">2020</div>
+                    <div class="year-item">2032</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <div class="info-card">
+                <h3>缘分配对</h3>
+                <div class="compatibility-grid">
+                    <div class="compat-item good">
+                        <div>🐂</div>
+                        <strong>牛</strong>
+                        <div>最佳配对</div>
+                    </div>
+                    <div class="compat-item good">
+                        <div>🐲</div>
+                        <strong>龙</strong>
+                        <div>上等配对</div>
+                    </div>
+                    <div class="compat-item good">
+                        <div>🐒</div>
+                        <strong>猴</strong>
+                        <div>上等配对</div>
+                    </div>
+                    <div class="compat-item normal">
+                        <div>🐯</div>
+                        <strong>虎</strong>
+                        <div>中等配对</div>
+                    </div>
+                    <div class="compat-item normal">
+                        <div>🐎</div>
+                        <strong>马</strong>
+                        <div>中等配对</div>
+                    </div>
+                    <div class="compat-item bad">
+                        <div>🐎</div>
+                        <strong>马</strong>
+                        <div>相冲</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>2024年运势</h3>
+                <h4>事业运势：★★★★☆</h4>
+                <p>事业上有新的机遇，适合开拓新领域，但要注意人际关系。</p>
+                
+                <h4>财运：★★★☆☆</h4>
+                <p>正财稳定，偏财需谨慎，避免高风险投资。</p>
+                
+                <h4>感情运势：★★★★☆</h4>
+                <p>单身者有机会遇到心仪对象，已婚者感情稳定。</p>
+                
+                <h4>健康运势：★★★☆☆</h4>
+                <p>注意作息规律，避免过度劳累。</p>
+            </div>
+
+            <div class="info-card">
+                <h3>幸运物</h3>
+                <ul>
+                    <li>幸运数字：2, 3</li>
+                    <li>幸运颜色：金色、蓝色</li>
+                    <li>幸运方位：东南、西北</li>
+                    <li>吉祥物：钱袋、元宝</li>
+                    <li>幸运花卉：百合花</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section style="max-width: 1200px; margin: 60px auto; padding: 0 20px;">
+        <h2 class="section-title">属鼠名人</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+            <div class="info-card">
+                <h4>朱元璋</h4>
+                <p>明朝开国皇帝，从乞丐到皇帝的传奇人生</p>
+            </div>
+            <div class="info-card">
+                <h4>莎士比亚</h4>
+                <p>英国文学史上最杰出的戏剧家</p>
+            </div>
+            <div class="info-card">
+                <h4>乔治·华盛顿</h4>
+                <p>美国第一任总统，开国元勋</p>
+            </div>
+            <div class="info-card">
+                <h4>莫扎特</h4>
+                <p>音乐神童，古典音乐的代表人物</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">十二生肖探秘</div>
+            <div class="footer-links">
+                <a href="index.html">首页</a>
+                <a href="navigation_origin.html">生肖起源</a>
+                <a href="navigation_zodiac.html">生肖大全</a>
+                <a href="navigation_personality.html">性格解析</a>
+                <a href="navigation_culture.html">生肖文化</a>
+            </div>
+            <div class="copyright">
+                &copy; 2024 十二生肖探秘 版权所有
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 60, density: { enable: true, value_area: 800 } },
+                color: { value: "#ff6b00" },
+                opacity: { value: 0.5 },
+                size: { value: 3 },
+                line_linked: {
+                    enable: true,
+                    distance: 150,
+                    color: "#ff6b00",
+                    opacity: 0.4,
+                    width: 1
+                },
+                move: { enable: true, speed: 2 }
+            }
+        });
+
+        // 老鼠跑动动画
+        function playRatAnimation() {
+            const rat = document.getElementById('ratAnimation');
+            rat.style.display = 'block';
+            
+            // 动画结束后隐藏
+            setTimeout(() => {
+                rat.style.display = 'none';
+            }, 2000);
+        }
+
+        // 页面加载时播放动画
+        window.addEventListener('load', function() {
+            setTimeout(playRatAnimation, 500);
+        });
+
+        // 点击logo时也可以播放动画
+        document.querySelector('.logo').addEventListener('click', function(e) {
+            e.preventDefault();
+            playRatAnimation();
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
